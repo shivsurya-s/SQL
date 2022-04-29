@@ -1,0 +1,66 @@
+/* AGGREGATE FUNCTION*/
+
+/* MIN*/
+SELECT MIN(replacement_cost)FROM film;
+
+/* MAX*/
+SELECT MAX(replacement_cost)FROM film;
+/*MIN AND MAX*/
+SELECT MIN(replacement_cost),MAX(replacement_cost)FROM film;
+
+/* AVG*/
+SELECT AVG(replacement_cost)FROM film;
+
+/* ROUND*/
+SELECT ROUND(AVG(replacement_cost),2)FROM film; /* ROUND requires two parameters*/
+
+/* SUM*/
+SELECT SUM(replacement_cost)FROM film;
+
+/* GROUPBY*/
+SELECT customer_id FROM payment
+GROUP BY customer_id
+ORDER BY customer_id;
+
+/* GROUPBY WITH AGG FUNCTION*/
+SELECT customer_id,SUM(amount) FROM payment
+GROUP BY customer_id
+ORDER BY SUM(amount) DESC;
+
+SELECT customer_id,COUNT(amount) FROM payment
+GROUP BY customer_id
+ORDER BY COUNT(amount) DESC;
+
+
+
+/* CHALLENGE TASK GROUPBY*/
+SELECT staff_id,COUNT(amount)FROM payment
+WHERE staff_id IN (1,2)
+GROUP BY staff_id
+ORDER BY COUNT(amount);
+
+SELECT rating,AVG(replacement_cost) FROM film
+GROUP BY rating;
+
+SELECT customer_id,SUM(amount)FROM payment
+GROUP BY customer_id
+ORDER BY SUM(amount) DESC
+LIMIT 5;
+
+/* HAVING*/
+SELECT customer_id,SUM(amount) FROM payment
+GROUP BY customer_id
+HAVING SUM(amount)>125
+ORDER BY SUM(amount);
+
+/* CHALLENGE TASK HAVING*/
+
+SELECT customer_id,COUNT(amount)FROM payment
+GROUP BY customer_id
+HAVING COUNT(amount)>=40
+ORDER BY COUNT(amount)DESC;
+
+SELECT customer_id,staff_id,SUM(amount)FROM payment
+WHERE staff_id IN (2)
+GROUP BY customer_id,staff_id
+HAVING SUM(amount)>100

@@ -1,0 +1,127 @@
+/*/* SELECT STATEMENT*/
+SELECT first_name,last_name,email FROM customer;
+
+/* SELECT DISTINCT STATEMENT*/
+SELECT * FROM film;
+SELECT DISTINCT release_year FROM FILM;
+
+/*CHALLENGE TASK SELECT DISTINCT STATEMENT*/
+SELECT * FROM film;
+SELECT DISTINCT(rental_rate) FROM film;
+SELECT DISTINCT rating FROM film;
+
+/* SELECT (COUNT) STATEMENT*/
+SELECT * FROM film;
+SELECT COUNT (rating) FROM film;
+SELECT COUNT(DISTINCT rating) FROM film;
+
+/*SELECT WHERE STATEMENT*/
+SELECT * FROM customer
+WHERE first_name='Linda';
+
+/*SELECT WHERE STATEMENT WITH LOGICAL OPERATOR*/
+SELECT * FROM film;
+SELECT DISTINCT rental_rate FROM film;
+SELECT DISTINCT rating FROM film;
+
+SELECT * FROM film
+WHERE rating = 'R' AND rental_rate > 4 AND replacement_cost >20;
+
+SELECT title FROM film
+WHERE rating = 'R' AND rental_rate > 4 AND replacement_cost >20;
+
+SELECT COUNT(title) FROM film
+WHERE rating = 'R' AND rental_rate > 4 AND replacement_cost >20;
+
+SELECT COUNT(*) FROM film
+WHERE rating = 'R' AND rental_rate > 4 AND replacement_cost >20;
+
+/*SELECT WHERE STATEMENT using OR OPERATOR*/
+SELECT COUNT(*) FROM film
+WHERE rental_duration = 7 OR rental_duration = 5
+
+/* CHALLENGE TASK SELECT WHERE */
+
+SELECT email FROM customer
+WHERE first_name='Nancy' AND last_name='Thomas';
+
+SELECT description FROM film
+WHERE title='Outlaw Hanky';
+
+SELECT phone FROM address
+WHERE address='259 Ipoh Drive';
+
+/* SELECT ORDER BY STATEMENT*/
+
+SELECT * FROM customer
+ORDER BY first_name;
+
+SELECT * FROM customer
+ORDER BY store_id ASC , first_name DESC;
+
+SELECT store_id,first_name,last_name FROM customer
+ORDER BY store_id ASC , first_name DESC;
+
+SELECT store_id,first_name,last_name FROM customer
+ORDER BY store_id DESC , first_name ASC;
+
+/* LIMIT STATEMENT*/
+SELECT * FROM payment
+ORDER BY payment_date DESC
+LIMIT 10;
+
+SELECT * FROM payment
+WHERE amount != 0
+ORDER BY payment_date DESC
+LIMIT 10;
+
+/* CHALLENGE TASK ORDER BY */
+
+SELECT customer_id FROM payment
+ORDER BY payment_date ASC
+LIMIT 10;
+
+SELECT title,length FROM film
+ORDER BY length ASC
+LIMIT 5;
+
+SELECT COUNT(title) FROM film
+WHERE length <=50;
+
+/* BETWEEN STATEMENT*/
+SELECT * FROM payment
+WHERE amount BETWEEN 1 AND 5;
+
+SELECT COUNT (*) FROM payment
+WHERE amount BETWEEN 1 AND 5;
+
+SELECT  * FROM payment
+WHERE amount NOT BETWEEN 1 AND 5;
+
+SELECT COUNT (*) FROM payment
+WHERE amount NOT BETWEEN 1 AND 5;
+
+SELECT * FROM payment
+WHERE payment_date BETWEEN '2007-02-15' AND '2007-02-28';
+
+/* IN STATEMENT */
+SELECT * FROM film
+WHERE length IN (50,46,30)
+
+SELECT * FROM film
+WHERE length NOT IN (50,46,30)
+
+/* LIKE AND ILIKE STATEMENT */
+
+SELECT * FROM customer
+WHERE first_name LIKE 'J%'   /* here first_Name starts with J,LIKE IS CASE-SENSITIVE*/
+
+SELECT * FROM customer
+WHERE first_name LIKE '%a'  /* here first_Name ends with a,LIKE IS CASE-SENSITIVE*/
+
+SELECT * FROM customer
+WHERE first_name ILIKE '%a'*/ /* here first_Name ends with a,ILIKE IS not CASE-SENSITIVE*/
+
+SELECT * FROM customer
+WHERE first_name LIKE '_her%'
+
